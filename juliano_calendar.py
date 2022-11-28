@@ -1,7 +1,7 @@
 def bisiesto(anno:int)->bool:
-        
+
     return(anno%4==0 and anno%100!=0) or (anno%400==0)
-    
+
 
 
 def num_of_day (month:int, anno:int)->int:
@@ -14,7 +14,7 @@ def num_of_day (month:int, anno:int)->int:
         return 29
     else:
         return 28
-    
+
 
 
 
@@ -23,7 +23,7 @@ def calculate_juliano_day(day:int,month:int,anno:int)->int:
 
     for i in range(1,month):
         juliano_day+= num_of_day(i,anno)
-    
+
     juliano_day += day
 
     return juliano_day
