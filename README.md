@@ -1,4 +1,4 @@
-
+``` python
 import math
 
 
@@ -56,3 +56,4 @@ def swap(arr: list[list[list[int]]], x1: int, y1: int, z1: int, x2: int, y2: int
 
 if __name__ == "__main__":
     pass
+```
