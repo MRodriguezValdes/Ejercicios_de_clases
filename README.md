@@ -1,42 +1,58 @@
-``` python
-def bisiesto(anno:int)->bool:
-        
-    return(anno%4==0 and anno%100!=0) or (anno%400==0)
-    
+
+import math
 
 
-def num_of_day (month:int, anno:int)->int:
+def merge_sort(arr: list[int]):
+    if len(arr) > 1:
+        middle: int = len(arr) // 2
+        L: list[int] = arr[:middle]
+        R: list[int] = arr[middle:]
 
-    if month  in [1,3,5,7,8,10,12]:
-        return 31
-    elif month in [4,6,9,11]:
-        return 30
-    elif month == 2 and bisiesto(anno):
-        return 29
-    else:
-        return 28
-    
+        merge_sort(L)
+        merge_sort(R)
+
+        i, j, k = 0, 0, 0
+
+        while i < len(L) and j < len(R):
+            if L[i] <= R[j]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = R[j]
+                j += 1
+            k += 1
+        while i < len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
+        while j < len(R):
+            arr[k] = R[j]
+            j += 1
+            k += 1
 
 
+def is_primo(number: int) -> bool:
+    for i in range(2, int(math.sqrt(number)) + 1):
+        if number % i == 0:
+            return False
 
-def calculate_juliano_day(day:int,month:int,anno:int)->int:
-    juliano_day=0
-
-    for i in range(1,month):
-        juliano_day+= num_of_day(i,anno)
-    
-    juliano_day += day
-
-    return juliano_day
+    return True
 
 
+def firts_primos(num):
+    numbers = 7
+    while num > 0:
+        if is_primo(numbers):
+            print(numbers)
+            num -= 1
+        numbers += 1
 
 
+def swap(arr: list[list[list[int]]], x1: int, y1: int, z1: int, x2: int, y2: int, z2: int):
+    aux:int = arr[x1][y1][z1]
+    arr[x1][y1][z1] = arr[x2][y2][z2]
+    arr[x2][y2][z2] = aux
 
-if __name__=="__main__":
-    day = int(input("Give a day: "))
-    month =int(input("Give a month: "))
-    anno = int(input("Give a anno: "))
 
-    print(calculate_juliano_day(day,month,anno))
-```
+if __name__ == "__main__":
+    pass
